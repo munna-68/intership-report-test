@@ -1,0 +1,678 @@
+% =====================================================================
+% BBA INTERNSHIP REPORT TEMPLATE
+% Topic: Evaluating MIS Practices in Project Monitoring: A Study on RDRS Bangladesh
+% Organization: RDRS Bangladesh, Evaluation Department
+% Program: BBA (Major in MIS)
+% ---------------------------------------------------------------------
+% HOW TO USE:
+%  1. Replace all text inside [square brackets] with your own information.
+%  2. Compile with pdflatex:  pdflatex main.tex  (run TWICE for TOC/LOT/LOF)
+%  3. No exotic packages required - compiles with a standard TeX Live /
+%     MiKTeX installation.
+% =====================================================================
+
+\documentclass[12pt,a4paper]{report}
+
+% ------------------------- Packages ----------------------------------
+\usepackage[margin=1in]{geometry}   % 1-inch margins on A4
+\usepackage[T1]{fontenc}            % Better font encoding
+\usepackage[utf8]{inputenc}         % UTF-8 input
+\usepackage{mathptmx}               % Times-like serif font (professional)
+\usepackage{setspace}               % Line spacing control
+\usepackage{graphicx}               % Include images: \includegraphics
+\usepackage{booktabs}               % Professional tables: \toprule etc.
+\usepackage{titlesec}               % Custom chapter/section headings
+\usepackage{fancyhdr}               % Custom header/footer
+\usepackage{float}                  % [H] placement option for tables/figures
+% hyperref MUST be loaded last (clean links, no ugly boxes)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=false,               % No colored boxes; links still clickable
+    pdfauthor={[Your Name]},
+    pdftitle={Evaluating MIS Practices in Project Monitoring: A Study on RDRS Bangladesh},
+    pdfsubject={BBA Internship Report (Major in MIS)},
+    pdfkeywords={MIS, Project Monitoring, RDRS Bangladesh, BBA, Internship}
+}
+
+% ------------------------- Spacing & Numbering ------------------------
+\onehalfspacing                     % 1.5 line spacing for body text
+\setcounter{secnumdepth}{2}         % Number \chapter, \section, \subsection
+\setcounter{tocdepth}{2}            % Show subsections in the TOC
+
+% ------------------------- Heading Styles -----------------------------
+% Chapter: bold, large, with horizontal rule underneath
+\titleformat{\chapter}[display]
+    {\normalfont\bfseries\Large}
+    {\chaptername\ \thechapter}
+    {10pt}
+    {\LARGE}
+    [\vspace{8pt}\rule{\textwidth}{1pt}]
+
+% Section / Subsection: bold, clean sizes
+\titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+    {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% Extra spacing around headings
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+\titlespacing*{\section}{0pt}{14pt}{8pt}
+\titlespacing*{\subsection}{0pt}{10pt}{6pt}
+
+% ------------------------- Header / Footer ----------------------------
+\setlength{\headheight}{14.5pt}     % Avoid fancyhdr warnings
+\pagestyle{fancy}
+\fancyhf{}                          % Clear defaults
+% TODO: Replace header text if needed, or leave empty for a minimal look
+\fancyhead[L]{\footnotesize BBA Internship Report}          % Left header
+\fancyhead[R]{\footnotesize RDRS Bangladesh}                % Right header
+\fancyfoot[C]{\thepage}             % Page number centered in footer
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+% Keep chapter opening pages with centered page numbers too
+\fancypagestyle{plain}{%
+    \fancyhf{}%
+    \fancyfoot[C]{\thepage}%
+    \renewcommand{\headrulewidth}{0pt}%
+}
+
+% =====================================================================
+\begin{document}
+
+% ======================= COVER / TITLE PAGE ==========================
+% TODO: Replace ALL placeholder text below with your actual details.
+\begin{titlepage}
+    \centering
+
+    % --- University Name ---
+    {\Large\bfseries [Your University Name] \par}
+    \vspace{4pt}
+    {\large Faculty of Business Administration \par}
+    {\normalsize Department of Management Information Systems \par}
+
+    \vspace{12pt}
+    \rule{\textwidth}{1.5pt}
+    \vspace{12pt}
+
+    % --- Report Title ---
+    {\LARGE\bfseries Evaluating MIS Practices in\\[6pt] Project Monitoring:\\[6pt]
+        A Study on RDRS Bangladesh \par}
+    \vspace{12pt}
+    {\large\itshape An Internship Report on the Evaluation Department,
+        RDRS Bangladesh \par}
+
+    \vspace{16pt}
+
+    % --- Submitted By / Submitted To boxes ---
+    \begin{minipage}[t]{0.46\textwidth}
+        \raggedright
+        \textbf{Submitted By:}\\[4pt]
+        [Your Full Name]\\           % TODO: your name
+        ID: [XX-XXXXX-X]\\           % TODO: your student ID
+        Program: BBA (Major in MIS)\\% Keep as is, or update batch/section
+        Batch: [XXth Batch]\\        % TODO: your batch
+        Semester: [Spring/Fall 20XX] % TODO: semester
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.46\textwidth}
+        \raggedright
+        \textbf{Submitted To:}\\[4pt]
+        [Supervisor's Full Name]\\   % TODO: academic supervisor
+        [Designation, e.g. Assistant Professor]\\ % TODO: designation
+        Department of MIS\\          % TODO: adjust if needed
+        [Your University Name]\\
+        \vspace{6pt}
+        \textbf{Organization Supervisor:}\\ % TODO: RDRS supervisor
+        [Name, Designation]\\
+        Evaluation Department, RDRS Bangladesh
+    \end{minipage}
+
+    \vfill
+
+    % --- Date ---
+    {\large Date of Submission: [DD Month YYYY] \par} % TODO: submission date
+    \vspace{8pt}
+    \rule{\textwidth}{1.5pt}
+    \vspace{6pt}
+    {\small In partial fulfillment of the requirements for the degree of
+        Bachelor of Business Administration (BBA), Major in Management
+        Information Systems \par}
+\end{titlepage}
+% ===================== END COVER PAGE =================================
+
+% Front matter uses roman numerals (i, ii, iii, ...)
+\pagenumbering{roman}
+
+% ===================== LETTER OF TRANSMITTAL ==========================
+% Unnumbered chapter (does not get a chapter number, but appears in TOC).
+\chapter*{Letter of Transmittal}
+\addcontentsline{toc}{chapter}{Letter of Transmittal}
+
+% TODO: Replace date, names, and addresses.
+\noindent
+[DD Month YYYY] \\[6pt]
+To\\
+[Supervisor's Full Name]\\
+[Designation]\\
+Department of Management Information Systems\\
+[Your University Name]\\
+[University Address]\\[12pt]
+
+\noindent
+\textbf{Subject: Submission of Internship Report on ``Evaluating MIS
+Practices in Project Monitoring: A Study on RDRS Bangladesh.''}\\[12pt]
+
+\noindent
+Dear Sir/Madam,\\[6pt]
+
+With due respect, I, [Your Full Name], ID: [XX-XXXXX-X], a student of the
+BBA program (Major in MIS), [Your University Name], have successfully
+completed my internship at the Evaluation Department of RDRS Bangladesh,
+Rangpur, from [Start Date] to [End Date]. As a requirement of the BBA
+program, I am pleased to submit my internship report entitled
+``Evaluating MIS Practices in Project Monitoring: A Study on RDRS
+Bangladesh.''
+
+During my internship, I observed how project data is collected from field
+offices, validated at the Evaluation Department, and used for monitoring
+reports and management decisions. This report analyzes the existing MIS
+tools, data flow, reporting practices, and challenges, and proposes
+practical recommendations.
+
+I have prepared this report with sincerity and to the best of my
+knowledge. I would be grateful for your kind evaluation and feedback.
+
+\vspace{12pt}
+\noindent
+Sincerely yours,\\[24pt]
+\rule{2.5in}{0.5pt}\\
+\textbf{[Your Full Name]}\\
+ID: [XX-XXXXX-X]\\
+BBA (Major in MIS), [Your University Name]\\
+Contact: [Phone / Email] % TODO: your contact
+\newpage
+
+% ========================= ACKNOWLEDGEMENT =============================
+\chapter*{Acknowledgement}
+\addcontentsline{toc}{chapter}{Acknowledgement}
+
+% TODO: Personalize with real names.
+First and foremost, I express my gratitude to Almighty Allah for giving me
+the strength to complete this internship and report successfully.
+
+I am sincerely thankful to my academic supervisor, [Supervisor's Name,
+Designation], Department of MIS, [Your University Name], for his/her
+valuable guidance, constructive feedback, and continuous encouragement
+throughout this work.
+
+I am equally grateful to my organization supervisor, [Name, Designation],
+Evaluation Department, RDRS Bangladesh, and to all officers and field
+staff who spared their busy time to explain the monitoring system,
+share data collection formats, and answer my interview questions. Without
+their cooperation, this study on MIS practices in project monitoring
+would not have been possible.
+
+Finally, I thank my family, friends, and fellow interns for their moral
+support during the internship period.
+
+\vspace{12pt}
+\noindent
+[Your Full Name]\\
+BBA (Major in MIS)\\
+[Your University Name]
+\newpage
+
+% ======================= EXECUTIVE SUMMARY =============================
+\chapter*{Executive Summary}
+\addcontentsline{toc}{chapter}{Executive Summary}
+
+% TODO: Rewrite in your own words after completing Chapters 4-6 (~300-400 words).
+This internship report evaluates the Management Information System (MIS)
+practices used for project monitoring at RDRS Bangladesh, with special
+focus on the Evaluation Department. The study was conducted during a
+[three-month] internship from [Start Date] to [End Date] at the RDRS
+head office in Rangpur.
+
+The broad objective of the study was to assess how effectively MIS tools
+and processes support timely, accurate, and decision-oriented project
+monitoring. Data were collected from both primary sources (direct
+observation, informal discussions, and semi-structured interviews with
+[X] Evaluation Department staff and field officers) and secondary
+sources (project documents, monitoring formats, progress reports, and
+the RDRS website and publications).
+
+The findings show that RDRS Bangladesh maintains a structured,
+largely Excel- and paper-assisted MIS supported by periodic field
+verification. The system performs well in routine data aggregation and
+donor reporting, but faces challenges including duplicate data entry,
+delayed field-level reporting, limited dashboard-based visualization,
+and uneven digital literacy among field staff. The study identifies
+specific gaps in data validation, real-time tracking, and feedback
+loops between the Evaluation Department and project teams.
+
+Based on these findings, the report recommends a phased digitization of
+field data collection, standardized indicator definitions, automated
+validation checks, a centralized monitoring dashboard, and regular MIS
+training for field and head-office staff. Strengthening these areas
+would improve data quality, reduce reporting delays, and enhance the
+use of monitoring information in management decisions.
+
+In conclusion, RDRS Bangladesh has a committed evaluation culture and a
+functional MIS foundation. With targeted improvements in automation,
+integration, and capacity building, its MIS can become a more
+proactive, real-time project monitoring system.
+\newpage
+
+% ============ TABLE OF CONTENTS / LISTS OF TABLES & FIGURES ============
+\tableofcontents
+\newpage
+\listoftables
+\listoffigures
+\newpage
+
+% Main matter uses arabic numerals (1, 2, 3, ...)
+\pagenumbering{arabic}
+
+% ========================= CHAPTER 1 ===================================
+\chapter{Introduction}
+
+\section{Background of the Study}
+% TODO: Rewrite with your own context and dates.
+In the contemporary development sector, timely and reliable information is
+critical for effective project management. Management Information Systems
+(MIS) provide the tools and processes through which organizations
+collect, process, store, and disseminate project data for monitoring and
+decision-making. For non-governmental organizations (NGOs) like RDRS
+Bangladesh, which implement multiple donor-funded projects across
+northern Bangladesh, a well-functioning MIS is essential to track
+progress against indicators, ensure accountability, and demonstrate
+results to stakeholders.
+
+RDRS Bangladesh, formerly the Rangpur Dinajpur Rural Service, has evolved
+from a relief-oriented program into a leading national development
+organization. Its Evaluation Department plays a central role in
+monitoring project performance, verifying field-level data, and
+producing progress reports. This report examines how MIS practices in
+this department support project monitoring, what works well, and where
+improvements are needed. The study connects classroom concepts from MIS,
+database management, and project monitoring with real organizational
+practices observed during the internship.
+
+\section{Objectives of the Study}
+The study is guided by one broad objective and several specific
+objectives.
+
+\subsection{Broad Objective}
+% TODO: Keep or refine to match your approved proposal.
+The broad objective of this study is to evaluate the existing MIS
+practices in project monitoring at RDRS Bangladesh and to suggest
+improvements for more effective, timely, and data-driven monitoring.
+
+\subsection{Specific Objectives}
+% TODO: Adjust the bullet list to match your approved objectives.
+\begin{itemize}
+    \item To understand the current MIS tools, data flow, and reporting
+        process used by the Evaluation Department.
+    \item To assess the effectiveness of MIS practices in ensuring data
+        accuracy, timeliness, and usability for project monitoring.
+    \item To identify the key challenges and gaps in data collection,
+        validation, storage, and reporting.
+    \item To recommend practical measures for strengthening MIS-based
+        project monitoring at RDRS Bangladesh.
+\end{itemize}
+
+\section{Scope of the Study}
+% TODO: Adjust location, duration, and coverage.
+This study focuses on the Evaluation Department at the RDRS Bangladesh
+head office in Rangpur and its linkage with selected field offices. It
+covers the MIS practices used for routine project monitoring --- data
+collection formats, data entry and validation, storage, analysis, and
+reporting --- during the internship period from [Start Date] to
+[End Date]. The study does not attempt a full IT audit or a financial
+evaluation; it concentrates on the information flow and monitoring use
+of MIS from a management perspective.
+
+\section{Methodology}
+This section describes the sources of data and the methods used to
+collect and analyze information.
+
+\subsection{Sources of Data}
+Both primary and secondary data were used:
+\begin{itemize}
+    \item \textbf{Primary sources:} Direct observation of daily MIS
+        activities, informal discussions with Evaluation Department
+        staff, and semi-structured interviews with [X] respondents
+        including monitoring officers and field facilitators.
+    \item \textbf{Secondary sources:} Project proposals, logical
+        frameworks, monitoring formats, monthly/quarterly progress
+        reports, RDRS annual reports, and the official RDRS website
+        and published documents.
+\end{itemize}
+
+\subsection{Data Collection Method}
+% TODO: Update sample size and tools.
+Data were collected through (i) participant observation during regular
+office work, (ii) a semi-structured interview checklist (see Appendix),
+and (iii) review of existing monitoring documents and report templates.
+Qualitative responses were summarized thematically around data quality,
+timeliness, usability, and system challenges. Simple frequency counts
+were used where applicable to highlight patterns in the findings
+presented in Chapter~4.
+
+\section{Limitations of the Study}
+% TODO: Be honest about your actual constraints.
+This study has several limitations. First, the internship duration of
+[three months] limited the scope of field visits; most observations are
+based on the head office and [one/two] field offices. Second, some
+project data are confidential and could not be disclosed in this report;
+aggregated and anonymized examples are used instead. Third, the study
+relies partly on respondents' perceptions, which may involve recall or
+response bias. Despite these limitations, the findings provide a useful
+overview of MIS practices in project monitoring at RDRS Bangladesh.
+
+% ========================= CHAPTER 2 ===================================
+\chapter{Organizational Overview}
+
+\section{About RDRS Bangladesh}
+% TODO: Verify facts (founding year, coverage, sectors) from RDRS sources.
+RDRS Bangladesh is a leading national development organization working to
+reduce poverty and empower rural communities, particularly in the
+northwestern region of Bangladesh. Established in [1972 as a field
+program and later registered as a national NGO], RDRS works in areas
+such as education, health, agriculture, climate resilience, governance,
+and microfinance. The organization partners with government agencies,
+international donors, and local communities to implement integrated
+development projects. During the internship, the author observed a strong
+field presence coordinated through regional and local offices reporting
+to the Rangpur head office.
+
+\section{Mission, Vision, and Objectives}
+% TODO: Copy the official statements from RDRS publications/website.
+\begin{itemize}
+    \item \textbf{Vision:} [e.g. A just and equitable society where the
+        poor exercise their rights and live with dignity.] % TODO: verify
+    \item \textbf{Mission:} [e.g. To empower rural communities through
+        sustainable development programs, capacity building, and policy
+        advocacy.] % TODO: verify
+    \item \textbf{Objectives:} (i) Strengthen livelihoods and food
+        security; (ii) improve access to quality education and health
+        services; (iii) build resilience to climate change; (iv) promote
+        good governance and social inclusion; and (v) ensure accountable,
+        evidence-based project management through effective monitoring
+        and evaluation.
+\end{itemize}
+
+\section{Organizational Structure}
+RDRS Bangladesh is headed by the Executive Director, supported by
+directors of program, finance, and administration divisions. The
+Evaluation Department functions as a cross-cutting support unit,
+working with sectoral programs and field management. A simplified
+organogram is shown in Figure~\ref{fig:orgchart}.
+
+% TODO: Replace the placeholder box with your org chart image:
+%   \includegraphics[width=0.9\textwidth]{images/org-chart.png}
+\begin{figure}[H]
+    \centering
+    \fbox{\parbox[c][2.8in][c]{4.2in}{%
+        \centering \textit{[Insert Organizational Chart of RDRS Bangladesh here]}\\
+        \small Executive Director $\rightarrow$ Directors $\rightarrow$
+        Evaluation Department + Programs + Field Offices}}
+    \caption{Simplified Organizational Structure of RDRS Bangladesh (placeholder)}
+    \label{fig:orgchart}
+\end{figure}
+
+\section{The Evaluation Department}
+% TODO: Confirm staffing and responsibilities with your supervisor.
+The Evaluation Department is responsible for designing monitoring
+frameworks, developing data collection tools, verifying field data,
+analyzing progress against indicators, and preparing monitoring reports
+for management and donors. Key functions observed during the internship
+include: (i) reviewing monthly field reports, (ii) conducting spot
+checks and joint field verification, (iii) maintaining project
+databases and filing systems, and (iv) providing feedback to project
+teams for corrective action. The department typically uses a combination
+of paper formats, spreadsheets, and shared files, with gradual adoption
+of digital data collection tools.
+
+\section{Ongoing Projects Overview}
+% TODO: List 3-5 projects you actually observed (use public information only).
+RDRS Bangladesh implements multiple projects at any given time. Examples
+observed or reviewed during the internship include:
+\begin{itemize}
+    \item \textbf{[Project A --- e.g. Climate-Resilient Livelihoods]:}
+        Focus on [adaptive agriculture and income diversification];
+        donor: [Donor name]. % TODO: replace
+    \item \textbf{[Project B --- e.g. Quality Primary Education]:}
+        Focus on [school support and community engagement];
+        donor: [Donor name]. % TODO: replace
+    \item \textbf{[Project C --- e.g. Community Health and Nutrition]:}
+        Focus on [maternal health and nutrition awareness];
+        donor: [Donor name]. % TODO: replace
+\end{itemize}
+Each project has its own results framework, but all report through a
+common monitoring cycle coordinated by the Evaluation Department.
+
+% ========================= CHAPTER 3 ===================================
+\chapter{Literature Review}
+% TODO: Expand with 4-6 textbook/journal sources from your course list.
+
+\section{Concept of MIS}
+A Management Information System (MIS) is an organized system for
+collecting, processing, storing, and distributing information to support
+decision-making and control in an organization \cite{laudon2022}. In the
+context of development projects, MIS transforms raw field data --- such
+as beneficiary counts, training records, and input distribution --- into
+structured monitoring information such as progress dashboards, variance
+reports, and trend analyses.
+
+\section{MIS in Project Monitoring}
+Project monitoring is the continuous process of tracking implementation
+against plans and indicators. Literature emphasizes that effective
+monitoring depends on clearly defined indicators, standardized data
+collection, validation mechanisms, and timely feedback loops
+\cite{naidoo2011}. MIS supports each of these stages by enforcing
+consistent formats, automating aggregation, and making information
+accessible to managers for corrective decisions.
+
+\section{MIS in NGOs in Bangladesh}
+Studies on Bangladeshi NGOs note a transition from paper-based reporting
+toward spreadsheet- and mobile-based systems, with persistent challenges
+in data quality, connectivity, and staff capacity \cite{nahmias2020}.
+Organizations with dedicated M\&E units and clear data-flow protocols
+tend to produce more reliable monitoring reports, while fragmented tools
+and duplicate entry increase errors and delays.
+
+\section{Theoretical Framework and Research Gap}
+This report adopts a simple input--process--output view of MIS for
+monitoring: field data (input) are validated and processed by the
+Evaluation Department (process) to produce monitoring reports and
+decisions (output). While existing literature discusses NGO monitoring
+systems generally, few studies examine the day-to-day MIS practices of
+the Evaluation Department of RDRS Bangladesh specifically. This report
+addresses that gap through direct observation and staff interviews.
+
+% ========================= CHAPTER 4 ===================================
+\chapter{Analysis and Findings}
+
+\section{Overview of the Current MIS Workflow}
+% TODO: Describe the actual data flow you observed.
+Field staff record activity data in prescribed paper or digital formats
+and submit them monthly to theEvaluation Department through field
+supervisors. The department checks completeness, enters or consolidates
+data into spreadsheets, resolves queries with field offices, and
+prepares monthly and quarterly summaries for project managers and
+donors. Spot verification visits are conducted to validate reported
+figures. This workflow is functional but involves repeated manual
+handling at several stages.
+
+\section{Effectiveness of MIS Practices}
+Table~\ref{tab:findings} summarizes the author's assessment of key MIS
+dimensions based on observation and interview responses
+(\(n =\) [X] respondents). % TODO: update sample size and ratings.
+Scores use a simple 5-point scale (1 = Very Weak, 5 = Very Strong) for
+illustration.
+
+% TODO: Replace the example numbers with your actual survey/assessment results.
+\begin{table}[H]
+    \centering
+    \caption{Assessment of MIS Practices in Project Monitoring (example format)}
+    \label{tab:findings}
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{MIS Dimension} & \textbf{Mean Score} & \textbf{Rank} & \textbf{Remarks} \\
+        \midrule
+        Data accuracy \& validation   & 3.8 & 1 & Spot checks help; entry errors remain \\
+        Timeliness of reporting       & 3.2 & 3 & Delays from field submission \\
+        Ease of data entry            & 3.5 & 2 & Formats clear; some duplication \\
+        Dashboard \& visualization    & 2.6 & 5 & Mostly tables; few charts \\
+        Use in decision-making        & 2.9 & 4 & Reports used; feedback loop slow \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The pattern suggests that data accuracy is relatively stronger due to
+manual verification, while visualization and feedback use are weaker.
+Respondents appreciated the clarity of monitoring formats but reported
+that duplicate entry across multiple spreadsheets consumes significant
+time.
+
+\section{Visualization and Reporting Practice}
+Figure~\ref{fig:reporting} illustrates a typical reporting pattern
+observed during the internship: most monitoring outputs are tabular
+progress tables, with limited use of charts or dashboards for trend
+analysis. % TODO: Replace with your own chart (e.g. export from Excel).
+
+% TODO: Replace the placeholder box with your own figure:
+%   \includegraphics[width=0.85\textwidth]{images/reporting-example.png}
+\begin{figure}[H]
+    \centering
+    \fbox{\parbox[c][2.5in][c]{4.2in}{%
+        \centering \textit{[Insert example monitoring chart or dashboard screenshot here]}\\
+        \small e.g. Monthly beneficiary coverage vs.\ target (bar chart)}}
+    \caption{Example of Current Monitoring Report Visualization (placeholder)}
+    \label{fig:reporting}
+\end{figure}
+
+\section{Key Challenges Identified}
+% TODO: Keep only the challenges you actually found evidence for.
+\begin{itemize}
+    \item \textbf{Duplicate data entry:} The same field data are entered
+        in multiple files for different projects and donors.
+    \item \textbf{Delayed field reporting:} Late submission from remote
+        offices compresses the time available for validation.
+    \item \textbf{Limited automation:} Few validation rules or automated
+        checks; errors are caught manually.
+    \item \textbf{Weak visualization:} Managers receive long tables with
+        limited summary charts or exception highlights.
+    \item \textbf{Capacity gaps:} Uneven Excel and digital-tool skills
+        among field staff slow down adoption of new formats.
+\end{itemize}
+
+% ========================= CHAPTER 5 ===================================
+\chapter{Recommendations}
+% TODO: Ensure each recommendation links to a finding in Chapter 4.
+Based on the analysis above, the following recommendations are proposed
+for the Evaluation Department and management of RDRS Bangladesh:
+
+\begin{enumerate}
+    \item \textbf{Digitize field data collection in phases.} Introduce
+        simple mobile-based forms (with offline capability) for routine
+        monthly reporting to reduce paper handling and transcription
+        errors. Start with one pilot project before scaling up.
+    \item \textbf{Standardize indicators and formats.} Publish a single
+        indicator dictionary with clear definitions, disaggregation
+        rules, and one approved format per data type to eliminate
+        parallel versions.
+    \item \textbf{Add automated validation checks.} Build range checks,
+        mandatory-field rules, and duplicate warnings into spreadsheet
+        templates or data entry forms to catch errors at the source.
+    \item \textbf{Create a centralized monitoring dashboard.} Develop a
+        simple dashboard (e.g. monthly coverage vs.\ target, overdue
+        reports, data-quality flags) for project managers using existing
+        tools before investing in larger software.
+    \item \textbf{Strengthen the feedback loop.} Share validated
+        monitoring summaries with field offices within [X] working days,
+        with clear action points, so reporting is seen as useful rather
+        than purely compliance-driven.
+    \item \textbf{Invest in regular MIS training.} Conduct short,
+        hands-on training on data entry, basic Excel functions, and data
+        ethics for field and head-office staff at least twice a year.
+\end{enumerate}
+
+% ========================= CHAPTER 6 ===================================
+\chapter{Conclusion}
+% TODO: Summarize without introducing major new points.
+This report evaluated the MIS practices in project monitoring at the
+Evaluation Department of RDRS Bangladesh. The study found a committed
+team, clear reporting formats, and a functioning verification system
+that together support credible routine monitoring and donor reporting.
+At the same time, manual processes, duplicate entry, reporting delays,
+and limited visualization constrain the timeliness and decision-use of
+monitoring information.
+
+The recommendations --- phased digitization, standardization, automated
+validation, a centralized dashboard, faster feedback, and regular
+training --- are practical steps that build on existing strengths
+rather than requiring an immediate large-scale system overhaul. With
+these improvements, the Evaluation Department can move from a largely
+retrospective reporting role toward a more real-time, analytical
+monitoring function.
+
+As an intern, the author gained hands-on understanding of how MIS
+concepts such as data quality, system workflow, and information use
+apply in a development organization. The experience bridged academic
+learning in the BBA (MIS) program with the realities of field-level
+project monitoring, and deepened appreciation for evidence-based
+management in the NGO sector.
+
+% ========================= REFERENCES ==================================
+% Manually formatted in APA style (7th ed.) as an example.
+% TODO: Replace with the sources you actually cited. Keep alphabetical order.
+\begin{thebibliography}{99}
+
+\bibitem{laudon2022}
+Laudon, K. C., \& Laudon, J. P. (2022). \textit{Management information
+systems: Managing the digital firm} (17th ed.). Pearson.
+
+\bibitem{naidoo2011}
+Naidoo, I. (2011). \textit{Monitoring and evaluation practices and
+challenges of non-governmental organisations}. [Publisher/Institution].
+% TODO: complete with actual source details.
+
+\bibitem{nahmias2020}
+Nahmias, P., \& Baumann, H. (2020). Digital monitoring systems in
+development programmes: Lessons from South Asia. \textit{Journal of
+Development Informatics}, \textit{4}(2), 45--62.
+% TODO: replace with a real article you consulted, or delete this entry.
+
+\bibitem{rdrs2024}
+RDRS Bangladesh. (2024). \textit{Annual report 2023--2024}. RDRS
+Bangladesh, Rangpur.
+% TODO: verify year/title and add URL if accessed online.
+
+\end{thebibliography}
+
+% ========================= APPENDIX ====================================
+\appendix
+\chapter{Appendix A: Interview Checklist and Sample Formats}
+% TODO: Insert your actual approved instruments here.
+
+\section*{A.1 Semi-Structured Interview Checklist (Sample)}
+\begin{enumerate}
+    \item What is your role in the project monitoring and reporting process?
+    \item Which data collection formats/tools do you use most frequently?
+    \item How is field-level data verified before final reporting?
+    \item What challenges do you face in data entry, validation, or timely submission?
+    \item How are monitoring reports used by management for decision-making?
+    \item What improvements to the current MIS would you suggest?
+\end{enumerate}
+
+\section*{A.2 Sample Monitoring Format (Placeholder)}
+% TODO: Paste a blank/anonymized version of one real format (remove sensitive data).
+\begin{center}
+\fbox{\parbox[c][2.2in][c]{4.5in}{%
+    \centering \textit{[Attach a blank monthly field-report format here]}\\
+    \small Remember to anonymize beneficiary and staff identifiers.}}
+\end{center}
+
+\end{document}
